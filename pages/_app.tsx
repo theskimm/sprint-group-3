@@ -1,6 +1,132 @@
-import '~/styles/globals.css'
-import type { AppProps } from 'next/app'
+import { ClerkProvider } from "@clerk/nextjs";
+import localFont from "next/font/local";
+import Nav from "~/components/nav";
+import type { AppProps } from "next/app";
+import "~/styles/globals.css";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <ClerkProvider {...pageProps}>
+      <div
+        className={`${sangbleu.variable} ${gt_america.variable} ${gt_america_mono.variable}`}
+      >
+        <Nav />
+
+        <Component {...pageProps} />
+      </div>
+    </ClerkProvider>
+  );
 }
+
+export default MyApp;
+
+const sangbleu = localFont({
+  src: [
+    {
+      path: "../public/fonts/sangbleu/SangBleuOGSans-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/sangbleu/SangBleuOGSans-RegularItalic.otf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/sangbleu/SangBleuOGSans-Medium.otf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/sangbleu/SangBleuOGSans-MediumItalic.otf",
+      weight: "500",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/sangbleu/SangBleuOGSans-Black.otf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/sangbleu/SangBleuOGSans-BlackItalic.otf",
+      weight: "700",
+      style: "italic",
+    },
+  ],
+  variable: "--font-sangbleu",
+  display: "swap",
+});
+
+const gt_america = localFont({
+  src: [
+    {
+      path: "../public/fonts/gt-america/GT-America-Standard-Regular-Trial.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/gt-america/GT-America-Standard-Regular-Italic-Trial.woff2",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/gt-america/GT-America-Standard-Medium-Trial.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/gt-america/GT-America-Standard-Medium-Italic-Trial.woff2",
+      weight: "500",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/gt-america/GT-America-Standard-Black-Trial.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/gt-america/GT-America-Standard-Black-Italic-Trial.woff2",
+      weight: "700",
+      style: "italic",
+    },
+  ],
+  variable: "--font-gt-america",
+  display: "swap",
+});
+
+const gt_america_mono = localFont({
+  src: [
+    {
+      path: "../public/fonts/gt-america/GT-America-Mono-Regular-Trial.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/gt-america/GT-America-Mono-Regular-Italic-Trial.woff2",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/gt-america/GT-America-Mono-Medium-Trial.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/gt-america/GT-America-Mono-Medium-Italic-Trial.woff2",
+      weight: "500",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/gt-america/GT-America-Mono-Black-Trial.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/gt-america/GT-America-Mono-Black-Italic-Trial.woff2",
+      weight: "700",
+      style: "italic",
+    },
+  ],
+  variable: "--font-gt-america-mono",
+  display: "swap",
+});
