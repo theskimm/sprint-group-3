@@ -14,8 +14,12 @@ function ThreadPage({ messages, thread }: ThreadPageProps) {
         <ul className="flex flex-col gap-16">
           {messages.map((message) => (
             <li key={message.message_id}>
-              
-              <div className={"relative flex flex-col gap-24 rounded border border-gray-600 p-32 font-gt-america " + (message.message_reply_id ? "ml-32" : "")}>
+              <div
+                className={
+                  "relative flex flex-col gap-24 rounded border border-gray-600 p-32 font-gt-america " +
+                  (message.message_reply_id ? "ml-32" : "")
+                }
+              >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-16">
                     <div className="relative aspect-square w-[44px] rounded-full bg-gray-300">
@@ -62,6 +66,17 @@ function ThreadPage({ messages, thread }: ThreadPageProps) {
             </li>
           ))}
         </ul>
+      </div>
+      <div className="flex w-full max-w-[1100px] flex-col gap-32 py-12">
+        <textarea
+          id="reply"
+          name="reply"
+          className="font-graphik h-[144px] w-full resize-none rounded border border-gray-300 p-16 text-14 outline-accent-teal transition-colors duration-300 placeholder:text-gray-500 focus-within:border-accent-teal focus:outline-none disabled:bg-white"
+          placeholder="Join the conversation here."
+        />
+        <button className="rounded-sm border bg-[#DBFF76] px-8 py-2 font-sangbleu text-12">
+          Reply
+        </button>
       </div>
     </main>
   );
