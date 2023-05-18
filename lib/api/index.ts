@@ -19,7 +19,7 @@ const api = {
   getMessagesFromThreadId,
   getThreadsFromForumId,
   getThreadsFromTopicId,
-  getThreadByThreadId
+  getThreadByThreadId,
 };
 
 export default api;

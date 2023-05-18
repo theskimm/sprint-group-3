@@ -176,7 +176,7 @@ export default function Home({ topics }: HomeProps) {
         </div>
 
         {/* Main Content */}
-        <div className="flex w-full basis-4/6 flex-col gap-64 px-48 py-32">
+        <div className="flex w-full basis-4/6 flex-col gap-48 px-48 py-32">
           <div className="flex flex-col gap-4">
             <span className="font-gt-america-mono text-14 uppercase">
               Friday, March 23, 2023
@@ -190,26 +190,36 @@ export default function Home({ topics }: HomeProps) {
 
           <hr className="bg-gray-300" />
 
-          <div className="flex items-center gap-12 text-14">
-            <button className="border bg-[#DBFF76] px-[10px] py-2">
-              For You
-            </button>
-            <button className="border px-[10px] py-2">Explore</button>
-            <button className="border px-[10px] py-2">Trending</button>
-          </div>
-
-          <div className="flex flex-col gap-16">
-            <span className="text-14 tracking-.02">
-              New Threads in{" "}
-              <span className="cursor-pointer underline underline-offset-2">
-                Career Switchers Forums
-              </span>
-            </span>
+          <div className="flex flex-col gap-32">
+            <div className="flex items-center gap-12 text-14">
+              <button className="border bg-[#DBFF76] px-[10px] py-2">
+                For You
+              </button>
+              <button className="border px-[10px] py-2">Explore</button>
+              <button className="border px-[10px] py-2">Trending</button>
+            </div>
 
             <div className="flex flex-col gap-16">
-              <ThreadContent text="I've been in my job for 2 years and haven't gotten a raise yet. How can I advocate for one? I'm going to be managing someone for the first time and really want to get it right." />
-              <ThreadContent text="I'm going to be managing someone for the first time and really want to get it right. Anyone have tips on where to start?" />
-              <ThreadContent text="Is it worth leaving my job to go to business school?" />
+              <span className="text-14 tracking-.02">
+                New Threads in{" "}
+                <span className="cursor-pointer underline underline-offset-2">
+                  Career Switchers Forums:
+                </span>
+              </span>
+              <div className="flex flex-col gap-16">
+                <ThreadContent
+                  name="Aisha R."
+                  text="I've been in my job for 2 years and haven't gotten a raise yet. How can I advocate for one? I'm going to be managing someone for the first time and really want to get it right."
+                />
+                <ThreadContent
+                  name="Maya S."
+                  text="I'm going to be managing someone for the first time and really want to get it right. Anyone have tips on where to start?"
+                />
+                <ThreadContent
+                  name="Fatima K."
+                  text="Is it worth leaving my job to go to business school?"
+                />
+              </div>
             </div>
           </div>
 
@@ -278,7 +288,14 @@ export default function Home({ topics }: HomeProps) {
             <span className="text-14 tracking-.02">Your Premium Content</span>
 
             <div className="flex flex-col gap-24 rounded border bg-[#F6FAEB] p-16">
-              <div className="aspect-video rounded bg-gray-300" />
+              <div className="relative aspect-video rounded bg-gray-300">
+                <Image
+                  src="/../public/images/career.png"
+                  alt=""
+                  fill
+                  className="object-cover"
+                />
+              </div>
 
               <div className="flex flex-col gap-4">
                 <span className="font-sangbleu text-24">Career Switcher</span>
@@ -360,7 +377,7 @@ export async function getStaticProps() {
   };
 }
 
-function ThreadContent({ text }: { text: string }) {
+function ThreadContent({ text, name }: { text: string; name: string }) {
   return (
     <div className="relative flex flex-col gap-20 rounded border border-gray-600 p-24 font-gt-america">
       <div className="flex items-center justify-between">
@@ -375,7 +392,7 @@ function ThreadContent({ text }: { text: string }) {
           </div>
 
           <div className="flex items-center gap-8 text-16/16 text-gray-700">
-            <span className="text-16 font-medium">Claire V.</span>
+            <span className="text-16 font-medium">{name}</span>
             {/* <span className="text-14 font-normal text-gray-500">|</span>
             <span className="text-14 font-normal">Coach</span> */}
           </div>
