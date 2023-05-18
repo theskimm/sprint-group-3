@@ -96,6 +96,30 @@ const options = [
   },
 ];
 
+const events = [
+  {
+    id: 1,
+    src: "/../public/images/event-1.png",
+    name: "Side Hustles",
+    text: "with Tonya Rapley",
+    subtext: "Author, entrepreneur, and owner of Club Loofah",
+  },
+  {
+    id: 2,
+    src: "/../public/images/event-2.png",
+    name: "Negotiating",
+    text: "with Angela King",
+    subtext: "Author, entrepreneur, and owner of Club Loofah",
+  },
+  {
+    id: 3,
+    src: "/../public/images/event-3.png",
+    name: "Networking",
+    text: "with Maya Bryant",
+    subtext: "Author, entrepreneur, and owner of Club Loofah",
+  },
+];
+
 export default function Home({ topics }: HomeProps) {
   return (
     <>
@@ -103,7 +127,7 @@ export default function Home({ topics }: HomeProps) {
         <title>Skimm Circle</title>
       </Head>
 
-      <main className="grid grid-cols-[256px_1fr_356px]">
+      <main className="grid grid-cols-[256px_minmax(813px,1fr)_356px]">
         {/* Left Sidebar */}
         <div className="relative flex w-full flex-col items-center gap-40 bg-[#F0EEF9] p-32">
           <div className="flex w-full flex-col items-center justify-center gap-16">
@@ -117,11 +141,14 @@ export default function Home({ topics }: HomeProps) {
             </div>
 
             <div className="flex flex-col items-center gap-24 text-14/14">
-              <div className="flex flex-col items-center justify-center gap-4">
+              <div className="flex flex-col items-center justify-center gap-8">
                 <span className="font-sangbleu text-24/24">Becca Harris</span>
-                <span className="text-12 uppercase tracking-.1 text-gray-600">
-                  Brooklyn, NY
-                </span>
+
+                <div className="flex items-center gap-8 text-[10px] uppercase tracking-.02 text-gray-600">
+                  <span className="">73°</span>
+                  <span className="">|</span>
+                  <span className="">Brooklyn, NY</span>
+                </div>
               </div>
 
               <div className="flex w-full items-center gap-16">
@@ -224,9 +251,50 @@ export default function Home({ topics }: HomeProps) {
           </div>
 
           <div className="flex flex-col gap-16">
-            <span className="text-14">
-              Becca people who join Career Switchers
+            <span className="text-14 tracking-.02">
+              Experts we think you may want to follow:
             </span>
+
+            <div className="no-scrollbar flex gap-16 overflow-x-auto pb-16">
+              {events.map((event) => {
+                return (
+                  <div
+                    key={event.id}
+                    className="flex flex-col gap-16 rounded bg-[#F6FAEB] p-24 shadow-md"
+                  >
+                    <div className="relative aspect-video w-[256px] rounded">
+                      <Image
+                        src={event.src}
+                        alt=""
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                      <span className="font-sangbleu text-24">
+                        {event.name}
+                      </span>
+                      <span className="text-14 font-medium tracking-.02">
+                        {event.text}
+                      </span>
+                      <span className="text-14">{event.subtext}</span>
+                    </div>
+
+                    <button
+                      type="button"
+                      className="mt-16 border border-[purple] px-[10px] py-4"
+                    >
+                      Follow
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-16">
+            <span className="text-14 tracking-.02">Explore more topics:</span>
 
             <ul className="grid auto-cols-fr grid-flow-col gap-32">
               {topics.slice(0, 4).map((topic) => {
