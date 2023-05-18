@@ -238,14 +238,17 @@ export default function Home({ topics }: HomeProps) {
                 <ThreadContent
                   name="Aisha R."
                   text="I've been in my job for 2 years and haven't gotten a raise yet. How can I advocate for one? I'm going to be managing someone for the first time and really want to get it right."
+                  src="/../public/images/person-1.png"
                 />
                 <ThreadContent
                   name="Maya S."
                   text="I'm going to be managing someone for the first time and really want to get it right. Anyone have tips on where to start?"
+                  src="/../public/images/person-2.png"
                 />
                 <ThreadContent
                   name="Fatima K."
                   text="Is it worth leaving my job to go to business school?"
+                  src="/../public/images/person-3.png"
                 />
               </div>
             </div>
@@ -450,18 +453,21 @@ export async function getStaticProps() {
   };
 }
 
-function ThreadContent({ text, name }: { text: string; name: string }) {
+function ThreadContent({
+  text,
+  name,
+  src,
+}: {
+  text: string;
+  name: string;
+  src: string;
+}) {
   return (
     <div className="relative flex flex-col gap-20 rounded border border-gray-600 p-24 font-gt-america">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-12">
           <div className="relative aspect-square w-[36px] rounded-full bg-gray-300">
-            {/* <Image
-              src={discussion.user.photo_url}
-              alt=""
-              fill
-              className="object-cover"
-            /> */}
+            <Image src={src} alt="" fill className="object-cover" />
           </div>
 
           <div className="flex items-center gap-8 text-16/16 text-gray-700">
