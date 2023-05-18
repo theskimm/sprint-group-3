@@ -1,12 +1,12 @@
 function Survey() {
   return (
-    <div id="poll" className="max-w-[70%] bg-soft-teal-100/50 p-64">
+    <div id="poll" className="bg-[#F0EEF9] p-64">
       <div className="n-lg:grid n-lg:grid-cols-2 n-lg:gap-96 container flex flex-col gap-32">
         <div className="flex flex-col gap-12">
           <div className="flex flex-col gap-24">
             <div className="flex flex-col gap-8">
               <span className="font-gt-america-mono text-12/12 uppercase">
-                Community Poll
+                Ask an Expert
               </span>
 
               <div className="flex flex-col gap-12">
@@ -34,7 +34,7 @@ function Survey() {
               <button type="button">
                 <div className="n-md:p-16 z-1 relative flex justify-between overflow-hidden rounded border-2 bg-white p-12 text-left">
                   <span className="body-2 max-w-[80%]">
-                    Tried ‘em, but haven’t found one I love
+                    Tried &apos;em, but haven&apos;t found one I love
                   </span>
                 </div>
               </button>

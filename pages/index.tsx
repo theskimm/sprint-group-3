@@ -5,6 +5,7 @@ import api from "~/lib/api";
 import type { InferGetStaticPropsType } from "next";
 import { useState } from "react";
 import Conversation from "~/components/conversation";
+import Survey from "~/components/survey";
 
 type HomeProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -328,6 +329,10 @@ export default function Home({ topics }: HomeProps) {
             <span className="text-14">Watch the Replay</span>
 
             <div className="aspect-video rounded bg-gray-300" />
+          </div>
+
+          <div className="w-full">
+            <Survey />
           </div>
 
           <div className="flex flex-col gap-16">

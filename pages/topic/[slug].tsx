@@ -93,7 +93,7 @@ function TopicPage({ topic, subtopics, discussions }: TopicPageProps) {
               return (
                 <li
                   key={category}
-                  className="border border-white px-12 py-8 font-gt-america text-14/14"
+                  className="border border-white px-12 py-8 font-gt-america text-14/14 tracking-.02"
                 >
                   {category}
                 </li>
@@ -104,7 +104,7 @@ function TopicPage({ topic, subtopics, discussions }: TopicPageProps) {
       </header>
 
       <div className="flex flex-col items-center gap-48 px-64 py-128">
-        <span className="text-[34px] leading-[40px]">
+        <span className="font-sangbleu text-[34px]/[40px] font-light">
           Learn From Our Experts
         </span>
 
@@ -113,15 +113,18 @@ function TopicPage({ topic, subtopics, discussions }: TopicPageProps) {
             return (
               <div
                 key={expert.id}
-                className="flex max-w-[354px] flex-col items-center gap-32 rounded border border-[#929B9A] p-32"
+                className="flex max-w-[354px] flex-col items-center gap-32 rounded border border-[#929B9A] bg-[#F6FAEB] p-32"
               >
-                <div className="relative aspect-square w-[220px]">
-                  <Image
-                    src={expert.photo}
-                    alt=""
-                    fill
-                    className="object-cover"
-                  />
+                <div className="flex flex-col items-center gap-4">
+                  <span className="font-sangbleu text-24">Side Hustles</span>
+                  <div className="relative aspect-square w-[220px]">
+                    <Image
+                      src={expert.photo}
+                      alt=""
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
 
                 <div className="flex flex-col items-center justify-center gap-4">
