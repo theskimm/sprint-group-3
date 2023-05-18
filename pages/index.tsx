@@ -1,8 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import Input from "~/components/input";
+import Head from "next/head";
 import api from "~/lib/api";
 import type { InferGetStaticPropsType } from "next";
+import { useState } from "react";
+import Conversation from "~/components/conversation";
 
 type HomeProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -10,6 +12,7 @@ const options = [
   {
     id: 1,
     text: "Feed",
+    isActive: true,
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -30,6 +33,7 @@ const options = [
   {
     id: 2,
     text: "Learn",
+    isActive: false,
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -48,6 +52,7 @@ const options = [
   {
     id: 3,
     text: "Experts",
+    isActive: false,
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -66,6 +71,7 @@ const options = [
   {
     id: 4,
     text: "Forums",
+    isActive: false,
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -92,229 +98,272 @@ const options = [
 
 export default function Home({ topics }: HomeProps) {
   return (
-    <main className="flex">
-      {/* Left Sidebar */}
-      <div className="flex w-full basis-1/5 flex-col gap-64 bg-[#F0EEF9] p-40">
-        <div className="flex flex-col items-center justify-center gap-16">
-          <div className="relative aspect-square w-[128px] rounded-full bg-gray-300">
-            <Image
-              src={"https://skimm2poct3.s3.amazonaws.com/users/user1.png"}
-              alt=""
-              fill
-              className="object-cover"
-            />
-          </div>
+    <>
+      <Head>
+        <title>Skimm Circle</title>
+      </Head>
 
-          <div className="flex flex-col items-center gap-24 text-14/14">
-            <div className="flex flex-col items-center justify-center gap-4">
-              <span className="font-sangbleu text-24/24">Becca Harris</span>
-              <span className="font-gt-america uppercase text-gray-600">
-                Brooklyn, NY
-              </span>
+      <main className="grid grid-cols-[256px_1fr_356px]">
+        {/* Left Sidebar */}
+        <div className="relative flex w-full flex-col items-center gap-40 bg-[#F0EEF9] p-32">
+          <div className="flex w-full flex-col items-center justify-center gap-16">
+            <div className="relative aspect-square w-[128px] rounded-full bg-gray-300">
+              <Image
+                src={"https://skimm2poct3.s3.amazonaws.com/users/user1.png"}
+                alt=""
+                fill
+                className="object-cover"
+              />
             </div>
 
-            <div className="flex w-full items-center gap-16">
-              {[
-                { id: 1, top: 4568, bottom: "Vibe Points" },
-                { id: 2, top: 2000, bottom: "Posts" },
-                { id: 3, top: 20, bottom: "Lorem" },
-              ].map((item) => {
-                return (
-                  <div
-                    className="flex flex-col items-center justify-center gap-4"
-                    key={item.id}
-                  >
-                    <span className="text-[11px]/[11px] font-bold">
-                      {item.top}
-                    </span>
-                    <span className="text-[11px]/[11px] text-gray-600">
-                      {item.bottom}
+            <div className="flex flex-col items-center gap-24 text-14/14">
+              <div className="flex flex-col items-center justify-center gap-4">
+                <span className="font-sangbleu text-24/24">Becca Harris</span>
+                <span className="text-12 uppercase tracking-.1 text-gray-600">
+                  Brooklyn, NY
+                </span>
+              </div>
+
+              <div className="flex w-full items-center gap-16">
+                {[
+                  { id: 1, top: 4568, bottom: "Vibe Points" },
+                  { id: 2, top: 2000, bottom: "Posts" },
+                  { id: 3, top: 20, bottom: "Lorem" },
+                ].map((item) => {
+                  return (
+                    <div
+                      className="flex flex-col items-center justify-center gap-4"
+                      key={item.id}
+                    >
+                      <span className="text-[11px]/[11px] font-bold">
+                        {item.top}
+                      </span>
+                      <span className="text-[11px]/[11px] text-gray-600">
+                        {item.bottom}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          <hr className="self-stretch text-gray-600" />
+
+          <div className="sticky top-32 mx-auto flex w-full max-w-[200px] flex-col gap-16">
+            {options.map((option) => {
+              return (
+                <div key={option.id} className="flex items-center gap-16">
+                  <div className="flex h-full w-[2px] items-center justify-center">
+                    {option.isActive && (
+                      <div className="h-full w-full rounded bg-[#6100FF]" />
+                    )}
+                  </div>
+
+                  <div className="flex items-center gap-16">
+                    <div className="flex aspect-square w-[32px] items-center justify-center">
+                      {option.icon}
+                    </div>
+
+                    <span className="text-14/14 text-gray-800">
+                      {option.text}
                     </span>
                   </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <div className="flex w-full basis-4/6 flex-col gap-48 px-48 py-32">
+          <div className="flex flex-col gap-4">
+            <span className="font-gt-america-mono text-14 uppercase">
+              Friday, March 23, 2023
+            </span>
+            <span className="font-sangbleu text-32">Hi Becca, TGIF.</span>
+          </div>
+
+          <div className="flex flex-col gap-24">
+            <Conversation />
+          </div>
+
+          <hr className="bg-gray-300" />
+
+          <div className="flex flex-col gap-32">
+            <div className="flex items-center gap-12 text-14">
+              <button className="border bg-[#DBFF76] px-[10px] py-2">
+                For You
+              </button>
+              <button className="border px-[10px] py-2">Explore</button>
+              <button className="border px-[10px] py-2">Trending</button>
+            </div>
+
+            <div className="flex flex-col gap-16">
+              <span className="text-14 tracking-.02">
+                New Threads in{" "}
+                <span className="cursor-pointer underline underline-offset-2">
+                  Career Switchers Forums:
+                </span>
+              </span>
+              <div className="flex flex-col gap-16">
+                <ThreadContent
+                  name="Aisha R."
+                  text="I've been in my job for 2 years and haven't gotten a raise yet. How can I advocate for one? I'm going to be managing someone for the first time and really want to get it right."
+                />
+                <ThreadContent
+                  name="Maya S."
+                  text="I'm going to be managing someone for the first time and really want to get it right. Anyone have tips on where to start?"
+                />
+                <ThreadContent
+                  name="Fatima K."
+                  text="Is it worth leaving my job to go to business school?"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-16">
+            <span className="text-14">
+              Becca people who join Career Switchers
+            </span>
+
+            <ul className="grid auto-cols-fr grid-flow-col gap-32">
+              {topics.slice(0, 4).map((topic) => {
+                return (
+                  <Link
+                    key={topic.topic_id}
+                    href={`/topic/${topic.slug}`}
+                    className=""
+                  >
+                    <div className="flex flex-col items-center justify-center gap-16">
+                      <div className="relative aspect-square w-full">
+                        <Image
+                          src={topic.header_bg_url}
+                          alt=""
+                          fill
+                          className="rounded object-cover"
+                        />
+                      </div>
+
+                      <span className="whitespace-nowrap font-gt-america-mono text-12/12 uppercase leading-[13px]">
+                        {topic.title}
+                      </span>
+                    </div>
+                  </Link>
+                );
+              })}
+            </ul>
+          </div>
+
+          <div className="flex flex-col gap-16">
+            <span className="text-14">Watch the Replay</span>
+
+            <div className="aspect-video rounded bg-gray-300" />
+          </div>
+
+          <div className="flex flex-col gap-16">
+            <span className="text-14">
+              Because you&apos;re subscribed to Skimm Your Life
+            </span>
+
+            <div className="flex flex-col gap-16">
+              <div className="aspect-video rounded bg-gray-300" />
+
+              <div className="flex flex-col gap-2">
+                <span className="text-16">Skimm Your Life Newsletter</span>
+                <p className="text-14">
+                  Let us Skimm your shopping cart, streaming queue, and
+                  bookshelf — and help you solve your everyday problems with
+                  smart products.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Sidebar */}
+        <div className="flex w-full flex-col gap-32 bg-[#FFF8F2] p-32">
+          <div className="flex flex-col gap-16">
+            <span className="text-14 tracking-.02">Your Premium Content</span>
+
+            <div className="flex flex-col gap-24 rounded border bg-[#F6FAEB] p-16">
+              <div className="relative aspect-video rounded bg-gray-300">
+                <Image
+                  src="/../public/images/career.png"
+                  alt=""
+                  fill
+                  className="object-cover"
+                />
+              </div>
+
+              <div className="flex flex-col gap-4">
+                <span className="font-sangbleu text-24">Career Switcher</span>
+                <span className="text-14 font-medium">with Tonya Rapley</span>
+                <span className="text-14">
+                  Author, entrepreneur, and owner of Club Loofah
+                </span>
+              </div>
+
+              <hr className="text-gray-600" />
+
+              <div className="flex flex-col">
+                <span className="text-12">Next Webinar</span>
+                <span className="font-gt-america-mono text-14">
+                  Monday 7 to 9 EST
+                </span>
+              </div>
+
+              <div className="flex flex-col gap-4">
+                <span className="text-12">Progress until XYZ is complete</span>
+                <div className="relative w-full">
+                  <div className="absolute top-1/2 h-[1px] w-full translate-y-[-50%] bg-black" />
+                  <div className="relative w-[66%] rounded border bg-[#D4FF5A] px-4 text-end text-11">
+                    60%
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-16">
+            <span className="text-14 tracking-.02">Topics You Follow</span>
+
+            <div className="flex flex-wrap gap-8">
+              {["Womens Health", "Mental Health", "Nutrition", "Career"].map(
+                (item) => {
+                  return (
+                    <span
+                      key={item}
+                      className="border bg-[#F0EEF9] px-[10px] py-4 font-gt-america-mono text-14 text-gray-800"
+                    >
+                      {item}
+                    </span>
+                  );
+                }
+              )}
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-16">
+            <span className="text-14 tracking-.02">Subscriptions</span>
+
+            <div className="flex flex-wrap gap-8">
+              {["Skimm Your Life", "Skimm Well", "Daily Skimm"].map((item) => {
+                return (
+                  <span
+                    key={item}
+                    className="border bg-[#F0EEF9] px-[10px] py-4 font-gt-america-mono text-14 text-gray-800"
+                  >
+                    {item}
+                  </span>
                 );
               })}
             </div>
           </div>
         </div>
-
-        <div className="flex flex-col gap-16">
-          {options.map((option) => {
-            return (
-              <div key={option.id} className="flex items-center gap-12">
-                <div className="flex aspect-square w-[32px] items-center justify-center">
-                  {option.icon}
-                </div>
-
-                <span className="text-14/14 text-gray-800">{option.text}</span>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="flex w-full basis-3/5 flex-col gap-64 p-40">
-        <div className="flex flex-col gap-16">
-          <div className="flex flex-col gap-4">
-            <span className="font-gt-america-mono text-14 uppercase">
-              Friday, March 23, 2023
-            </span>
-            <span className="font-sangbleu text-32">
-              Hi Becca, welcome back.
-            </span>
-          </div>
-
-          <div className="flex items-center gap-12 text-14">
-            <button className="border bg-[#DBFF76] px-[10px] py-2">
-              For You
-            </button>
-            <button className="border px-[10px] py-2">Explore</button>
-            <button className="border px-[10px] py-2">Trending</button>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-16">
-          <span className="text-14">
-            New Threads in Career Switchers Forums
-          </span>
-
-          <div className="flex flex-col gap-16">
-            <ThreadContent text="I've been in my job for 2 years and haven't gotten a raise yet. How can I advocate for one? I'm going to be managing someone for the first time and really want to get it right." />
-            <ThreadContent text="I'm going to be managing someone for the first time and really want to get it right. Anyone have tips on where to start?" />
-            <ThreadContent text="Is it worth leaving my job to go to business school?" />
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-16">
-          <span className="text-14">
-            Becca people who join Career Switchers
-          </span>
-
-          <ul className="grid auto-cols-fr grid-flow-col gap-32">
-            {topics.slice(0, 4).map((topic) => {
-              return (
-                <Link
-                  key={topic.topic_id}
-                  href={`/topic/${topic.slug}`}
-                  className=""
-                >
-                  <div className="flex flex-col items-center justify-center gap-16">
-                    <div className="relative aspect-square w-full">
-                      <Image
-                        src={topic.header_bg_url}
-                        alt=""
-                        fill
-                        className="rounded object-cover"
-                      />
-                    </div>
-
-                    <span className="whitespace-nowrap font-gt-america-mono text-12/12 uppercase leading-[13px]">
-                      {topic.title}
-                    </span>
-                  </div>
-                </Link>
-              );
-            })}
-          </ul>
-        </div>
-
-        <div className="flex flex-col gap-16">
-          <span className="text-14">Watch the Replay</span>
-
-          <div className="aspect-video rounded bg-gray-300" />
-        </div>
-
-        <div className="flex flex-col gap-16">
-          <span className="text-14">
-            Because you&apos;re subscribed to Skimm Your Life
-          </span>
-
-          <div className="flex flex-col gap-16">
-            <div className="aspect-video rounded bg-gray-300" />
-
-            <div className="flex flex-col gap-2">
-              <span className="text-16">Skimm Your Life Newsletter</span>
-              <p className="text-14">
-                Let us Skimm your shopping cart, streaming queue, and bookshelf
-                — and help you solve your everyday problems with smart products.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Right Sidebar */}
-      <div className="flex w-full basis-1/5 flex-col gap-32 bg-[#FFF8F2] px-16 py-32">
-        <div className="flex flex-col gap-24">
-          <span className="text-14">Your Premium Content</span>
-
-          <div className="flex flex-col gap-24 rounded border bg-[#F6FAEB] p-16">
-            <div className="aspect-video rounded bg-gray-300" />
-
-            <div className="flex flex-col gap-4">
-              <span className="font-sangbleu text-24">Career Switcher</span>
-              <span className="text-14 font-medium">with Tonya Rapley</span>
-              <span className="text-14">
-                Author, entrepreneur, and owner of Club Loofah
-              </span>
-            </div>
-
-            <hr className="text-gray-600" />
-
-            <div className="flex flex-col">
-              <span className="text-12">Next Webinar</span>
-              <span className="font-gt-america-mono text-14">
-                Monday 7 to 9 EST
-              </span>
-            </div>
-
-            <div className="flex flex-col gap-4">
-              <span className="text-12">Progress until XYZ is complete</span>
-              <div className="relative w-full">
-                <div className="absolute top-1/2 h-[1px] w-full translate-y-[-50%] bg-black" />
-                <div className="relative w-[66%] rounded border bg-[#D4FF5A] px-4 text-end text-11">
-                  60%
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-24">
-          <span className="text-14">Topics You Follow</span>
-          <div className="flex flex-wrap gap-8">
-            {["Womens Health", "Mental Health", "Nutrition", "Career"].map(
-              (item) => {
-                return (
-                  <span
-                    key={item}
-                    className="bg-[#F0EEF9] px-[10px] py-2 font-gt-america-mono text-14 text-gray-800"
-                  >
-                    {item}
-                  </span>
-                );
-              }
-            )}
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-24">
-          <span className="text-14">Subscriptions</span>
-          <div className="flex flex-wrap gap-8">
-            {["Skimm Your Life", "Skimm Well", "Daily Skimm"].map((item) => {
-              return (
-                <span
-                  key={item}
-                  className="bg-[#F0EEF9] px-[10px] py-2 font-gt-america-mono text-14 text-gray-800"
-                >
-                  {item}
-                </span>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-    </main>
+      </main>
+    </>
   );
 }
 
@@ -328,11 +377,11 @@ export async function getStaticProps() {
   };
 }
 
-function ThreadContent({ text }: { text: string }) {
+function ThreadContent({ text, name }: { text: string; name: string }) {
   return (
     <div className="relative flex flex-col gap-20 rounded border border-gray-600 p-24 font-gt-america">
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-16">
+        <div className="flex items-center gap-12">
           <div className="relative aspect-square w-[36px] rounded-full bg-gray-300">
             {/* <Image
               src={discussion.user.photo_url}
@@ -343,18 +392,18 @@ function ThreadContent({ text }: { text: string }) {
           </div>
 
           <div className="flex items-center gap-8 text-16/16 text-gray-700">
-            <span>Claire V.</span>
-            <span className="text-gray-500">|</span>
-            <span>Coach</span>
+            <span className="text-16 font-medium">{name}</span>
+            {/* <span className="text-14 font-normal text-gray-500">|</span>
+            <span className="text-14 font-normal">Coach</span> */}
           </div>
         </div>
 
-        <button className="rounded-sm border border-[#6100FF] px-[10px] py-2 text-12">
+        {/* <button className="rounded-sm border border-[#6100FF] px-[10px] py-2 text-12">
           Join
-        </button>
+        </button> */}
       </div>
 
-      <p className="font-normal">{text}</p>
+      <p className="text-14 font-light">{text}</p>
 
       <div className="flex w-full items-center justify-between">
         <div className="flex items-center gap-16">
@@ -449,75 +498,6 @@ function Content({
       </div>
 
       <div className="w-full">{children}</div>
-    </div>
-  );
-}
-
-function VideoContent() {
-  return (
-    <div>
-      <span>Video</span>
-    </div>
-  );
-}
-
-function DiscussionContent() {
-  return (
-    <div>
-      <span>Discussion</span>
-    </div>
-  );
-}
-
-function PostContent() {
-  return (
-    <div>
-      <span>Post</span>
-    </div>
-  );
-}
-
-const content = [
-  { id: 1, type: "video", name: "Becca S.", time: "12 mins ago" },
-  { id: 2, type: "forum", name: "Lena D.", time: "14 mins ago" },
-  { id: 3, type: "post", name: "John H.", time: "1 hour ago" },
-  { id: 4, type: "video", name: "Becca S.", time: "1 hour ago" },
-  { id: 5, type: "forum", name: "Lena D.", time: "3 hours ago" },
-  { id: 6, type: "post", name: "John H.", time: "4 hours ago" },
-];
-
-function DummyContent() {
-  return (
-    <div className="flex flex-col items-center justify-center gap-32">
-      {content.map((item) => {
-        const user = {
-          name: item.name,
-          time: item.time,
-        };
-
-        switch (item.type) {
-          case "video":
-            return (
-              <Content user={user}>
-                <VideoContent />
-              </Content>
-            );
-          case "forum":
-            return (
-              <Content user={user}>
-                <DiscussionContent />
-              </Content>
-            );
-          case "post":
-            return (
-              <Content user={user}>
-                <PostContent />
-              </Content>
-            );
-          default:
-            return <div></div>;
-        }
-      })}
     </div>
   );
 }
