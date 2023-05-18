@@ -60,6 +60,26 @@ const sangbleu = localFont({
 const gt_america = localFont({
   src: [
     {
+      path: "../public/fonts/gt-america/GT-America-Standard-Thin-Trial.woff2",
+      weight: "200",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/gt-america/GT-America-Standard-Thin-Italic-Trial.woff2",
+      weight: "200",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/gt-america/GT-America-Standard-Light-Trial.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/gt-america/GT-America-Standard-Light-Italic-Trial.woff2",
+      weight: "300",
+      style: "italic",
+    },
+    {
       path: "../public/fonts/gt-america/GT-America-Standard-Regular-Trial.woff2",
       weight: "400",
       style: "normal",
@@ -96,6 +116,26 @@ const gt_america = localFont({
 
 const gt_america_mono = localFont({
   src: [
+    {
+      path: "../public/fonts/gt-america/GT-America-Mono-Thin-Trial.woff2",
+      weight: "200",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/gt-america/GT-America-Mono-Thin-Italic-Trial.woff2",
+      weight: "200",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/gt-america/GT-America-Mono-Light-Trial.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/gt-america/GT-America-Mono-Light-Italic-Trial.woff2",
+      weight: "300",
+      style: "italic",
+    },
     {
       path: "../public/fonts/gt-america/GT-America-Mono-Regular-Trial.woff2",
       weight: "400",
