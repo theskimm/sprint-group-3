@@ -183,51 +183,57 @@ function TopicPage({ topic, subtopics, discussions }: TopicPageProps) {
         <ul className="flex flex-col gap-16">
           {discussions.map((discussion) => (
             <li key={discussion.thread_id}>
-              <div className="relative flex flex-col gap-24 rounded border border-gray-600 p-32 font-gt-america">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-16">
-                    <div className="relative aspect-square w-[44px] rounded-full bg-gray-300">
-                      <Image
-                        src={discussion.user.photo_url}
-                        alt=""
-                        fill
-                        className="object-cover"
-                      />
+              <Link
+                key={discussion.thread_id}
+                href={`/thread/${discussion.thread_id}`}
+                className=""
+              >
+                <div className="relative flex flex-col gap-24 rounded border border-gray-600 p-32 font-gt-america">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-16">
+                      <div className="relative aspect-square w-[44px] rounded-full bg-gray-300">
+                        <Image
+                          src={discussion.user.photo_url}
+                          alt=""
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <div className="flex items-center gap-8 text-16/16 text-gray-700">
+                        <span>{discussion.user.name}</span>
+                        <span className="text-gray-500">|</span>
+                        <span>Coach</span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-8 text-16/16 text-gray-700">
-                      <span>{discussion.user.name}</span>
-                      <span className="text-gray-500">|</span>
-                      <span>Coach</span>
+
+                    <button className="rounded-sm border bg-[#DBFF76] px-8 py-2 font-sangbleu text-12">
+                      Join
+                    </button>
+                  </div>
+
+                  <p className="">{discussion.title}</p>
+
+                  <div className="flex w-full items-center justify-between">
+                    <div className="flex items-center gap-16">
+                      <span className="font-gt-america-mono text-12/12 uppercase text-gray-600 underline underline-offset-2">
+                        Getting a Raise
+                      </span>
+                      <span className="font-gt-america-mono text-12/12 uppercase text-gray-600 underline underline-offset-2">
+                        Leadership
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-16">
+                      <span className="font-gt-america-mono text-12/12 uppercase text-gray-600">
+                        150 hearts
+                      </span>
+                      <span className="font-gt-america-mono text-12/12 uppercase text-gray-600">
+                        2k comments
+                      </span>
                     </div>
                   </div>
-
-                  <button className="rounded-sm border bg-[#DBFF76] px-8 py-2 font-sangbleu text-12">
-                    Join
-                  </button>
                 </div>
-
-                <p className="">{discussion.title}</p>
-
-                <div className="flex w-full items-center justify-between">
-                  <div className="flex items-center gap-16">
-                    <span className="font-gt-america-mono text-12/12 uppercase text-gray-600 underline underline-offset-2">
-                      Getting a Raise
-                    </span>
-                    <span className="font-gt-america-mono text-12/12 uppercase text-gray-600 underline underline-offset-2">
-                      Leadership
-                    </span>
-                  </div>
-
-                  <div className="flex items-center gap-16">
-                    <span className="font-gt-america-mono text-12/12 uppercase text-gray-600">
-                      150 hearts
-                    </span>
-                    <span className="font-gt-america-mono text-12/12 uppercase text-gray-600">
-                      2k comments
-                    </span>
-                  </div>
-                </div>
-              </div>
+              </Link>
             </li>
           ))}
         </ul>

@@ -43,6 +43,17 @@ type MessageType = {
   status: MessageStatus;
 };
 
+type MessageWithUserType = {
+  message_id: string;
+  topic_id: string;
+  forum_id: string;
+  message_reply_id: string;
+  message_text: string;
+  user_id: string;
+  status: MessageStatus;
+  user: UserType;
+};
+
 type ThreadType = {
   thread_id: string;
   forum_id: string;
