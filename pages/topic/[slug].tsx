@@ -9,7 +9,7 @@ const experts = [
   {
     id: 1,
     name: "Tonya Rapley",
-    photo: "/../public/images/experts/expert-1.png",
+    photo: "/images/experts/expert-1.png",
     description: "Author, entrepreneur, and owner of Club Loofah",
     participants: "500 participants",
     joined: true,
@@ -17,7 +17,7 @@ const experts = [
   {
     id: 2,
     name: "Tonya Rapley",
-    photo: "/../public/images/experts/expert-2.png",
+    photo: "/images/experts/expert-2.png",
     description: "Author, entrepreneur, and owner of Club Loofah",
     participants: "500 participants",
     joined: false,
@@ -25,7 +25,7 @@ const experts = [
   {
     id: 3,
     name: "Tonya Rapley",
-    photo: "/../public/images/experts/expert-3.png",
+    photo: "/images/experts/expert-3.png",
     description: "Author, entrepreneur, and owner of Club Loofah",
     participants: "500 participants",
     joined: false,
