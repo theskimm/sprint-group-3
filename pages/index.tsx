@@ -7,6 +7,7 @@ import { useState } from "react";
 import Conversation from "~/components/conversation";
 import Survey from "~/components/survey";
 import JustForYou from "~/components/just-for-you-shopping";
+import threadContentImgOne from "/../public/images/person-1.png";
 
 type HomeProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -136,7 +137,7 @@ export default function Home({ topics }: HomeProps) {
             <div className="flex w-full flex-col items-center justify-center gap-16">
               <div className="relative aspect-square w-[144px] rounded-full border-2 border-[#54003D]">
                 <Image
-                  src={"https://skimm2poct3.s3.amazonaws.com/users/user1.png"}
+                  src="https://skimm2poct3.s3.amazonaws.com/users/user1.png"
                   alt=""
                   fill
                   className="object-cover"
@@ -243,7 +244,7 @@ export default function Home({ topics }: HomeProps) {
                 <ThreadContent
                   name="Aisha R."
                   text="I've been in my job for 2 years and haven't gotten a raise yet. How can I advocate for one? I'm going to be managing someone for the first time and really want to get it right."
-                  src="/../public/images/person-1.png"
+                  src={threadContentImgOne}
                 />
                 <ThreadContent
                   name="Maya S."
@@ -529,7 +530,7 @@ function ThreadContent({
 }: {
   text: string;
   name: string;
-  src: string;
+  src: any;
 }) {
   return (
     <div className="relative flex flex-col gap-20 rounded border border-gray-600 p-24 font-gt-america">
