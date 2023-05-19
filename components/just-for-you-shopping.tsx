@@ -21,7 +21,7 @@ function JustForYou() {
             <div className="flex items-center gap-32">
               <div className="relative aspect-square w-[164px] overflow-hidden rounded bg-gray-300">
                 <Image
-                  src="/../public/images/product/earrings.png"
+                  src="/images/product/earrings.png"
                   alt=""
                   fill
                   className="object-cover"
@@ -55,7 +55,7 @@ function JustForYou() {
             <div className="flex items-center gap-32">
               <div className="relative aspect-square w-[164px] shrink-0 overflow-hidden rounded bg-gray-300">
                 <Image
-                  src="/../public/images/product/headphones.png"
+                  src="/images/product/headphones.png"
                   alt=""
                   fill
                   className="object-cover"
