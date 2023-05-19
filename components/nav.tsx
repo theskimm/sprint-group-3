@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import * as Dialog from "@radix-ui/react-dialog";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Conversation from "./conversation";
 
 function Nav() {

@@ -1,4 +1,3 @@
-import { ClerkProvider } from "@clerk/nextjs";
 import localFont from "next/font/local";
 import Nav from "~/components/nav";
 import type { AppProps } from "next/app";
@@ -6,15 +5,13 @@ import "~/styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ClerkProvider {...pageProps}>
-      <div
-        className={`${sangbleu.variable} ${gt_america.variable} ${gt_america_mono.variable}`}
-      >
-        <Nav />
+    <div
+      className={`${sangbleu.variable} ${gt_america.variable} ${gt_america_mono.variable}`}
+    >
+      <Nav />
 
-        <Component {...pageProps} />
-      </div>
-    </ClerkProvider>
+      <Component {...pageProps} />
+    </div>
   );
 }
 
