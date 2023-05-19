@@ -211,8 +211,11 @@ function TopicPage({ topic, subtopics, discussions }: TopicPageProps) {
                       </div>
                     </div>
 
-                    <button className="rounded-sm border bg-[#DBFF76] px-8 py-2 font-sangbleu text-12">
-                      Join
+                    <button
+                      type="button"
+                      className="self-start border border-[#6100FF] px-12 py-8 text-14/14 font-medium"
+                    >
+                      Mark as Read
                     </button>
                   </div>
 
