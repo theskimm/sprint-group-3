@@ -333,7 +333,7 @@ export default function Home({ topics }: HomeProps) {
             </ul>
           </div>
 
-          <div className="flex flex-col gap-16">
+          {/* <div className="flex flex-col gap-16">
             <span className="text-14/22 font-medium">Watch the Replay:</span>
 
             <div className="relative aspect-video rounded bg-gray-300">
@@ -344,7 +344,7 @@ export default function Home({ topics }: HomeProps) {
                 className="object-cover"
               />
             </div>
-          </div>
+          </div> */}
 
           <div className="flex flex-col gap-16">
             <span className="text-14/22 font-medium">
