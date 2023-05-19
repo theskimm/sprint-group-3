@@ -1,5 +1,4 @@
 import api from "~/lib/api";
-import Link from "next/link";
 import Image from "next/image";
 import type { InferGetStaticPropsType, GetStaticPropsContext } from "next";
 
@@ -8,7 +7,12 @@ type ThreadPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 function ThreadPage({ messages, thread }: ThreadPageProps) {
   return (
     <main className="my-64 flex flex-col gap-32 px-64">
-      <h1 className="font-domaine text-32/38 font-medium">{thread.title}</h1>
+      <div className="flex flex-col gap-4">
+        <span className="font-gt-america-mono text-14/14 font-medium uppercase tracking-.02 text-gray-600">
+          Thread
+        </span>
+        <h1 className="font-sangbleu text-32/38 font-medium">{thread.title}</h1>
+      </div>
 
       <div className="flex w-full max-w-[1100px] flex-col gap-32 py-12">
         <ul className="flex flex-col gap-16">
@@ -36,10 +40,6 @@ function ThreadPage({ messages, thread }: ThreadPageProps) {
                       <span>{message.user.title}</span>
                     </div>
                   </div>
-
-                  <button className="rounded-sm border bg-[#DBFF76] px-8 py-2 font-sangbleu text-12">
-                    Join
-                  </button>
                 </div>
                 <p className="">{message.message_text}</p>
 
