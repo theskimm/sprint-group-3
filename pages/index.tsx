@@ -545,9 +545,12 @@ function ThreadContent({
           </div>
         </div>
 
-        {/* <button className="rounded-sm border border-[#6100FF] px-[10px] py-2 text-12">
-          Join
-        </button> */}
+        <button
+          type="button"
+          className="self-start border border-[#6100FF] px-12 py-8 text-14/14 font-medium"
+        >
+          Mark as Read
+        </button>
       </div>
 
       <p className="text-14 font-light">{text}</p>
