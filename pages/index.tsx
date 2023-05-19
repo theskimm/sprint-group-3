@@ -2,12 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
 import api from "~/lib/api";
-import type { InferGetStaticPropsType } from "next";
-import { useState } from "react";
 import Conversation from "~/components/conversation";
 import Survey from "~/components/survey";
 import JustForYou from "~/components/just-for-you-shopping";
-import threadContentImgOne from "/../public/images/person-1.png";
+import type { InferGetStaticPropsType } from "next";
 
 type HomeProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -102,21 +100,21 @@ const options = [
 const events = [
   {
     id: 1,
-    src: "/../public/images/event-1.png",
+    src: "/images/event-1.png",
     name: "Side Hustles",
     text: "with Tonya Rapley",
     subtext: "Author, entrepreneur, and owner of Club Loofah",
   },
   {
     id: 2,
-    src: "/../public/images/event-2.png",
+    src: "/images/event-2.png",
     name: "Negotiating",
     text: "with Angela King",
     subtext: "Author, entrepreneur, and owner of Club Loofah",
   },
   {
     id: 3,
-    src: "/../public/images/event-3.png",
+    src: "/images/event-3.png",
     name: "Networking",
     text: "with Maya Bryant",
     subtext: "Author, entrepreneur, and owner of Club Loofah",
@@ -244,17 +242,17 @@ export default function Home({ topics }: HomeProps) {
                 <ThreadContent
                   name="Aisha R."
                   text="I've been in my job for 2 years and haven't gotten a raise yet. How can I advocate for one? I'm going to be managing someone for the first time and really want to get it right."
-                  src={threadContentImgOne}
+                  src="/images/person-1.png"
                 />
                 <ThreadContent
                   name="Maya S."
                   text="I'm going to be managing someone for the first time and really want to get it right. Anyone have tips on where to start?"
-                  src="/../public/images/person-2.png"
+                  src="/images/person-2.png"
                 />
                 <ThreadContent
                   name="Fatima K."
                   text="Is it worth leaving my job to go to business school?"
-                  src="/../public/images/person-3.png"
+                  src="/images/person-3.png"
                 />
               </div>
             </div>
@@ -340,7 +338,7 @@ export default function Home({ topics }: HomeProps) {
 
             <div className="relative aspect-video rounded bg-gray-300">
               <Image
-                src="/../public/images/portfolio.jpg"
+                src="/images/portfolio.jpg"
                 alt=""
                 fill
                 className="object-cover"
@@ -359,17 +357,17 @@ export default function Home({ topics }: HomeProps) {
               <ThreadContent
                 name="Aisha R."
                 text="I've been in my job for 2 years and haven't gotten a raise yet. How can I advocate for one? I'm going to be managing someone for the first time and really want to get it right."
-                src="/../public/images/person-1.png"
+                src="/images/person-1.png"
               />
               <ThreadContent
                 name="Maya S."
                 text="I'm going to be managing someone for the first time and really want to get it right. Anyone have tips on where to start?"
-                src="/../public/images/person-2.png"
+                src="/images/person-2.png"
               />
               <ThreadContent
                 name="Fatima K."
                 text="Is it worth leaving my job to go to business school?"
-                src="/../public/images/person-3.png"
+                src="/images/person-3.png"
               />
             </div>
           </div>
@@ -386,7 +384,7 @@ export default function Home({ topics }: HomeProps) {
             <div className="flex flex-col gap-16">
               <div className="relative aspect-video rounded">
                 <Image
-                  src="/../public/images/syl-ad.png"
+                  src="/images/syl-ad.png"
                   alt=""
                   fill
                   className="object-cover"
@@ -423,7 +421,7 @@ export default function Home({ topics }: HomeProps) {
               <div className="flex flex-col gap-16 rounded border bg-[#F6FAEB] p-16">
                 <div className="relative aspect-video overflow-hidden rounded bg-gray-300">
                   <Image
-                    src="/../public/images/career.png"
+                    src="/images/career.png"
                     alt=""
                     fill
                     className="object-cover"
