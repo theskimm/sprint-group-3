@@ -152,7 +152,9 @@ function TopicPage({ topic, subtopics, discussions }: TopicPageProps) {
       </div>
 
       <div className="flex flex-col items-center justify-center gap-32 self-stretch bg-[#54003D] py-[64px] text-white">
-        <span className="text-[34px] leading-[40px]">Related Topics</span>
+        <span className="font-sangbleu text-[34px] leading-[40px]">
+          Related Topics
+        </span>
 
         <ul className="flex gap-16">
           {subtopics.map((subtopic) => {
@@ -179,7 +181,7 @@ function TopicPage({ topic, subtopics, discussions }: TopicPageProps) {
       </div>
 
       <div className="flex w-full max-w-[1100px] flex-col gap-32 py-128">
-        <span className="text-[34px] leading-[40px]">
+        <span className="font-sangbleu text-[34px] leading-[40px]">
           Join The Conversation
         </span>
 

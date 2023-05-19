@@ -8,7 +8,55 @@ function Nav() {
   return (
     <nav className="bg-soft-teal flex h-64 items-center justify-between bg-[#54003D] px-64 shadow">
       <ul className="flex items-center gap-8">
-        <Link href="/">
+        <Link href="/" className="flex items-center gap-16">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            fill="none"
+            viewBox="0 0 30 30"
+          >
+            <g clipPath="url(#clip0_71_3272)">
+              <path
+                fill="#00C4B3"
+                d="M7.003 15H0c0 8.295 6.705 15 15 15v-7.003A7.992 7.992 0 017.003 15z"
+              ></path>
+              <path
+                fill="#DBE1C7"
+                d="M15 7.003V0C6.705 0 0 6.705 0 15h7.003A7.992 7.992 0 0115 7.003z"
+              ></path>
+              <path
+                fill="#6100FF"
+                d="M15 0v7.003A7.992 7.992 0 0122.997 15H30c0-8.295-6.705-15-15-15z"
+              ></path>
+              <path
+                fill="#FFE5CE"
+                d="M15 22.997V30c8.295 0 15-6.705 15-15h-7.003A7.992 7.992 0 0115 22.997z"
+              ></path>
+              <path
+                fill="#FF542F"
+                d="M15 22.997A7.992 7.992 0 0022.997 15H15v7.997z"
+              ></path>
+              <path
+                fill="#D7EAF0"
+                d="M7.003 15A7.992 7.992 0 0015 22.997V15H7.003z"
+              ></path>
+              <path
+                fill="#54003D"
+                d="M22.997 15A7.992 7.992 0 0015 7.003V15h7.997z"
+              ></path>
+              <path
+                fill="#D4FF5A"
+                d="M7.003 15H15V7.003A7.992 7.992 0 007.003 15z"
+              ></path>
+            </g>
+            <defs>
+              <clipPath id="clip0_71_3272">
+                <path fill="#fff" d="M0 0H30V30H0z"></path>
+              </clipPath>
+            </defs>
+          </svg>
+
           <span className="font-sangbleu text-24/24 text-white">
             Skimm Circle
           </span>
@@ -21,18 +69,23 @@ function Nav() {
           <Dialog.Trigger asChild>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
+              width="36"
+              height="31"
               fill="none"
-              viewBox="0 0 24 24"
+              viewBox="0 0 36 31"
             >
-              <circle cx="6" cy="9" r="2" fill="#00C4B3"></circle>
-              <circle cx="12" cy="9" r="2" fill="#00C4B3"></circle>
-              <circle cx="18" cy="9" r="2" fill="#00C4B3"></circle>
+              <circle cx="6" cy="16" r="2" fill="#00C4B3"></circle>
+              <circle cx="12" cy="16" r="2" fill="#00C4B3"></circle>
+              <circle cx="18" cy="16" r="2" fill="#00C4B3"></circle>
               <path
                 stroke="#fff"
                 strokeWidth="0.857"
-                d="M18.514 18.086H.43V.429h22.285v21.68l-3.897-3.898-.125-.125h-.178z"
+                d="M18.514 25.086H.43V7.429h22.285v21.68l-3.897-3.898-.125-.125h-.178z"
+              ></path>
+              <circle cx="28" cy="8" r="8" fill="#00C4B3"></circle>
+              <path
+                fill="#fff"
+                d="M28.822 11h-1.07V9.894H25.47v-.787l2.074-3.129h1.279v3.064h.708v.852h-.708V11zM26.43 9.042h1.323V7.618c0-.21 0-.383.021-.664h-.007c-.08.224-.145.354-.29.563l-.765 1.156a2.373 2.373 0 01-.282.369z"
               ></path>
             </svg>
           </Dialog.Trigger>

@@ -6,6 +6,7 @@ import type { InferGetStaticPropsType } from "next";
 import { useState } from "react";
 import Conversation from "~/components/conversation";
 import Survey from "~/components/survey";
+import JustForYou from "~/components/just-for-you-shopping";
 
 type HomeProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -24,7 +25,7 @@ const options = [
         className="shrink-0"
       >
         <path
-          fill="#6100FF"
+          fill="#DBFF76"
           stroke="#000"
           d="M21.577 8.13l-1.315-.04-.515-.014V19.747h-4.784v-5.784H8.178v5.784H3.392V8.177H1.5L11.57.626 21.577 8.13z"
         ></path>
@@ -128,88 +129,92 @@ export default function Home({ topics }: HomeProps) {
         <title>Skimm Circle</title>
       </Head>
 
-      <main className="grid grid-cols-[256px_minmax(813px,1fr)_356px]">
+      <main className="relative grid grid-cols-[256px_minmax(813px,1fr)_356px]">
         {/* Left Sidebar */}
-        <div className="relative flex w-full flex-col items-center gap-40 bg-[#F0EEF9] p-32">
-          <div className="flex w-full flex-col items-center justify-center gap-16">
-            <div className="relative aspect-square w-[128px] rounded-full bg-gray-300">
-              <Image
-                src={"https://skimm2poct3.s3.amazonaws.com/users/user1.png"}
-                alt=""
-                fill
-                className="object-cover"
-              />
-            </div>
-
-            <div className="flex flex-col items-center gap-24 text-14/14">
-              <div className="flex flex-col items-center justify-center gap-8">
-                <span className="font-sangbleu text-24/24">Becca Harris</span>
-
-                <div className="flex items-center gap-8 text-[10px] uppercase tracking-.02 text-gray-600">
-                  <span className="">73°</span>
-                  <span className="">|</span>
-                  <span className="">Brooklyn, NY</span>
-                </div>
+        <div className="h-full bg-[#F0EEF9]">
+          <div className="sticky top-0 flex w-full flex-col items-center gap-40 self-start p-32">
+            <div className="flex w-full flex-col items-center justify-center gap-16">
+              <div className="relative aspect-square w-[96px] rounded-full border-2 border-[#54003D]">
+                <Image
+                  src={"https://skimm2poct3.s3.amazonaws.com/users/user1.png"}
+                  alt=""
+                  fill
+                  className="object-cover"
+                />
               </div>
 
-              <div className="flex w-full items-center gap-16">
-                {[
-                  { id: 1, top: 4568, bottom: "Vibe Points" },
-                  { id: 2, top: 2000, bottom: "Posts" },
-                  { id: 3, top: 20, bottom: "Lorem" },
-                ].map((item) => {
-                  return (
-                    <div
-                      className="flex flex-col items-center justify-center gap-4"
-                      key={item.id}
-                    >
-                      <span className="text-[11px]/[11px] font-bold">
-                        {item.top}
-                      </span>
-                      <span className="text-[11px]/[11px] text-gray-600">
-                        {item.bottom}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
+              <div className="flex flex-col items-center gap-24 text-14/14">
+                <div className="flex flex-col items-center justify-center gap-8">
+                  <span className="font-sangbleu text-24/24">Becca Harris</span>
 
-          <hr className="self-stretch text-gray-600" />
-
-          <div className="sticky top-32 mx-auto flex w-full max-w-[200px] flex-col gap-16">
-            {options.map((option) => {
-              return (
-                <div key={option.id} className="flex items-center gap-16">
-                  <div className="flex h-full w-[2px] items-center justify-center">
-                    {option.isActive && (
-                      <div className="h-full w-full rounded bg-[#6100FF]" />
-                    )}
-                  </div>
-
-                  <div className="flex items-center gap-16">
-                    <div className="flex aspect-square w-[32px] items-center justify-center">
-                      {option.icon}
-                    </div>
-
-                    <span className="text-14/14 text-gray-800">
-                      {option.text}
-                    </span>
+                  <div className="flex items-center gap-8 text-[10px] uppercase tracking-.02 text-gray-600">
+                    <span className="">73°</span>
+                    <span className="">|</span>
+                    <span className="">Brooklyn, NY</span>
                   </div>
                 </div>
-              );
-            })}
+
+                <div className="flex w-full items-center gap-16">
+                  {[
+                    { id: 1, top: 4568, bottom: "Vibe Points" },
+                    { id: 2, top: 28, bottom: "Posts" },
+                    { id: 3, top: 5, bottom: "Badges" },
+                  ].map((item) => {
+                    return (
+                      <div
+                        className="flex flex-col items-center justify-center gap-4"
+                        key={item.id}
+                      >
+                        <span className="text-[11px]/[11px] font-bold">
+                          {item.top}
+                        </span>
+                        <span className="text-[11px]/[11px] text-gray-600">
+                          {item.bottom}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            <hr className="self-stretch text-gray-600" />
+
+            <div className="mx-auto flex w-full max-w-[200px] flex-col gap-16">
+              {options.map((option) => {
+                return (
+                  <div key={option.id} className="flex items-center gap-16">
+                    <div className="flex h-full w-[2px] items-center justify-center">
+                      {option.isActive && (
+                        <div className="h-full w-full rounded bg-[#6100FF]" />
+                      )}
+                    </div>
+
+                    <div className="flex items-center gap-16">
+                      <div className="flex aspect-square w-[32px] items-center justify-center">
+                        {option.icon}
+                      </div>
+
+                      <span className="text-14/14 text-gray-800">
+                        {option.text}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
 
         {/* Main Content */}
-        <div className="flex w-full basis-4/6 flex-col gap-48 px-48 py-32">
-          <div className="flex flex-col gap-4">
-            <span className="font-gt-america-mono text-14 uppercase">
+        <div className="flex w-full basis-4/6 flex-col gap-48 px-48 py-36">
+          <div className="flex flex-col">
+            <span className="font-gt-america-mono text-14/24 uppercase tracking-.02">
               Friday, March 23, 2023
             </span>
-            <span className="font-sangbleu text-32">Hi Becca, TGIF.</span>
+            <span className="font-sangbleu text-28/40">
+              Hi Becca, Happy Friday.
+            </span>
           </div>
 
           <div className="flex flex-col gap-24">
@@ -228,7 +233,7 @@ export default function Home({ topics }: HomeProps) {
             </div>
 
             <div className="flex flex-col gap-16">
-              <span className="text-14 tracking-.02">
+              <span className="text-14/22 font-medium">
                 New Threads in{" "}
                 <span className="cursor-pointer underline underline-offset-2">
                   Career Switchers Forums:
@@ -255,7 +260,7 @@ export default function Home({ topics }: HomeProps) {
           </div>
 
           <div className="flex flex-col gap-16">
-            <span className="text-14 tracking-.02">
+            <span className="text-14/22 font-medium">
               Experts we think you may want to follow:
             </span>
 
@@ -275,19 +280,20 @@ export default function Home({ topics }: HomeProps) {
                       />
                     </div>
 
-                    <div className="flex flex-col gap-2">
-                      <span className="font-sangbleu text-24">
+                    <div className="flex flex-col gap-4">
+                      <span className="font-sangbleu text-24/28">
                         {event.name}
                       </span>
-                      <span className="text-14 font-medium tracking-.02">
+                      <span className="text-12/12 font-medium">
                         {event.text}
                       </span>
-                      <span className="text-14">{event.subtext}</span>
                     </div>
+
+                    <span className="text-14/22">{event.subtext}</span>
 
                     <button
                       type="button"
-                      className="mt-16 border border-[purple] px-[10px] py-4"
+                      className="self-start border border-[#6100FF] px-12 py-8 text-14/14 font-medium"
                     >
                       Follow
                     </button>
@@ -298,7 +304,7 @@ export default function Home({ topics }: HomeProps) {
           </div>
 
           <div className="flex flex-col gap-16">
-            <span className="text-14 tracking-.02">Explore more topics:</span>
+            <span className="text-14/22 font-medium">Explore more topics:</span>
 
             <ul className="grid auto-cols-fr grid-flow-col gap-32">
               {topics.slice(0, 4).map((topic) => {
@@ -329,9 +335,42 @@ export default function Home({ topics }: HomeProps) {
           </div>
 
           <div className="flex flex-col gap-16">
-            <span className="text-14">Watch the Replay</span>
+            <span className="text-14/22 font-medium">Watch the Replay:</span>
 
-            <div className="aspect-video rounded bg-gray-300" />
+            <div className="relative aspect-video rounded bg-gray-300">
+              <Image
+                src="/../public/images/portfolio.png"
+                alt=""
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-16">
+            <span className="text-14/22 font-medium">
+              New Threads in{" "}
+              <span className="cursor-pointer underline underline-offset-2">
+                Career Switchers Forums:
+              </span>
+            </span>
+            <div className="flex flex-col gap-16">
+              <ThreadContent
+                name="Aisha R."
+                text="I've been in my job for 2 years and haven't gotten a raise yet. How can I advocate for one? I'm going to be managing someone for the first time and really want to get it right."
+                src="/../public/images/person-1.png"
+              />
+              <ThreadContent
+                name="Maya S."
+                text="I'm going to be managing someone for the first time and really want to get it right. Anyone have tips on where to start?"
+                src="/../public/images/person-2.png"
+              />
+              <ThreadContent
+                name="Fatima K."
+                text="Is it worth leaving my job to go to business school?"
+                src="/../public/images/person-3.png"
+              />
+            </div>
           </div>
 
           <div className="w-full">
@@ -339,102 +378,132 @@ export default function Home({ topics }: HomeProps) {
           </div>
 
           <div className="flex flex-col gap-16">
-            <span className="text-14">
-              Because you&apos;re subscribed to Skimm Your Life
+            <span className="text-14/22 font-medium">
+              Because you&apos;re subscribed to Skimm Your Life:
             </span>
 
             <div className="flex flex-col gap-16">
-              <div className="aspect-video rounded bg-gray-300" />
-
-              <div className="flex flex-col gap-2">
-                <span className="text-16">Skimm Your Life Newsletter</span>
-                <p className="text-14">
-                  Let us Skimm your shopping cart, streaming queue, and
-                  bookshelf — and help you solve your everyday problems with
-                  smart products.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Sidebar */}
-        <div className="flex w-full flex-col gap-32 bg-[#FFF8F2] p-32">
-          <div className="flex flex-col gap-16">
-            <span className="text-14 tracking-.02">Your Premium Content</span>
-
-            <div className="flex flex-col gap-24 rounded border bg-[#F6FAEB] p-16">
-              <div className="relative aspect-video rounded bg-gray-300">
+              <div className="relative aspect-video rounded">
                 <Image
-                  src="/../public/images/career.png"
+                  src="/../public/images/syl-ad.png"
                   alt=""
                   fill
                   className="object-cover"
                 />
               </div>
 
-              <div className="flex flex-col gap-4">
-                <span className="font-sangbleu text-24">Career Switcher</span>
-                <span className="text-14 font-medium">with Tonya Rapley</span>
-                <span className="text-14">
+              <div className="flex flex-col gap-8">
+                <span className="text-22/22 font-medium">
+                  Sunscreen recs, quick-brew coffee, and more…
+                </span>
+                <p className="text-16/[25px]">
+                  We&apos;re back today with your daily dose of product recs so
+                  you can live your smartest life. We&apos;re also celebrating a
+                  recent coffee launch and have a new read to gush about. Just
+                  keep scrollin&apos;…
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="w-full">
+            <JustForYou />
+          </div>
+        </div>
+
+        {/* Right Sidebar */}
+        <div className="h-full bg-[#FFF8F2]">
+          <div className="sticky top-0 flex w-full flex-col gap-32  p-32">
+            <div className="flex flex-col gap-16">
+              <span className="text-14/18 font-gt-america font-medium tracking-.02">
+                Upcoming
+              </span>
+
+              <div className="flex flex-col gap-16 rounded border bg-[#F6FAEB] p-16">
+                <div className="relative aspect-video overflow-hidden rounded bg-gray-300">
+                  <Image
+                    src="/../public/images/career.png"
+                    alt=""
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+
+                <div className="flex flex-col gap-4">
+                  <span className="font-sangbleu text-24/28">
+                    Switching Careers
+                  </span>
+                  <span className="text-12/12 font-medium">
+                    with Claire Vargas
+                  </span>
+                </div>
+
+                <span className="text-14/22">
                   Author, entrepreneur, and owner of Club Loofah
                 </span>
-              </div>
 
-              <hr className="text-gray-600" />
+                <hr className="text-gray-600" />
 
-              <div className="flex flex-col">
-                <span className="text-12">Next Webinar</span>
-                <span className="font-gt-america-mono text-14">
-                  Monday 7 to 9 EST
-                </span>
-              </div>
+                <div className="flex flex-col">
+                  <span className="text-12">Next Webinar</span>
+                  <span className="font-gt-america-mono text-14">
+                    Monday 7 to 9 EST
+                  </span>
+                </div>
 
-              <div className="flex flex-col gap-4">
-                <span className="text-12">Progress until XYZ is complete</span>
-                <div className="relative w-full">
-                  <div className="absolute top-1/2 h-[1px] w-full translate-y-[-50%] bg-black" />
-                  <div className="relative w-[66%] rounded border bg-[#D4FF5A] px-4 text-end text-11">
-                    60%
+                <div className="flex flex-col gap-8">
+                  <span className="text-12">Your progress</span>
+
+                  <div className="relative w-full">
+                    <div className="absolute top-1/2 h-[1px] w-full translate-y-[-50%] bg-black" />
+                    <div className="relative w-[66%] rounded border bg-[#D4FF5A] px-4 text-end text-11">
+                      60%
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className="flex flex-col gap-16">
-            <span className="text-14 tracking-.02">Topics You Follow</span>
+            <div className="flex flex-col gap-16">
+              <span className="text-14/18 font-gt-america font-medium tracking-.02">
+                Topics You Follow
+              </span>
 
-            <div className="flex flex-wrap gap-8">
-              {["Womens Health", "Mental Health", "Nutrition", "Career"].map(
-                (item) => {
-                  return (
-                    <span
-                      key={item}
-                      className="border bg-[#F0EEF9] px-[10px] py-4 font-gt-america-mono text-14 text-gray-800"
-                    >
-                      {item}
-                    </span>
-                  );
-                }
-              )}
+              <div className="flex flex-wrap gap-8">
+                {["Womens Health", "Mental Health", "Nutrition", "Career"].map(
+                  (item) => {
+                    return (
+                      <span
+                        key={item}
+                        className="border bg-[#F0EEF9] px-[10px] py-4 font-gt-america-mono text-14 text-gray-800"
+                      >
+                        {item}
+                      </span>
+                    );
+                  }
+                )}
+              </div>
             </div>
-          </div>
 
-          <div className="flex flex-col gap-16">
-            <span className="text-14 tracking-.02">Subscriptions</span>
+            <div className="flex flex-col gap-16">
+              <span className="text-14/18 font-gt-america font-medium tracking-.02">
+                Subscriptions
+              </span>
 
-            <div className="flex flex-wrap gap-8">
-              {["Skimm Your Life", "Skimm Well", "Daily Skimm"].map((item) => {
-                return (
-                  <span
-                    key={item}
-                    className="border bg-[#F0EEF9] px-[10px] py-4 font-gt-america-mono text-14 text-gray-800"
-                  >
-                    {item}
-                  </span>
-                );
-              })}
+              <div className="flex flex-wrap gap-8">
+                {["Skimm Your Life", "Skimm Well", "Daily Skimm"].map(
+                  (item) => {
+                    return (
+                      <span
+                        key={item}
+                        className="border bg-[#F0EEF9] px-[10px] py-4 font-gt-america-mono text-14 text-gray-800"
+                      >
+                        {item}
+                      </span>
+                    );
+                  }
+                )}
+              </div>
             </div>
           </div>
         </div>

@@ -9,13 +9,13 @@ const conversation = [
   {
     id: 3,
     type: "bot",
-    text: "That's OK! Sometimes we can't do it all. Do you want a recommendation for a quick read?",
+    text: "That's OK! Sometimes we can't do it all. Do you want a recommendation for a quick read or podcast?",
   },
   { id: 4, type: "self", text: "No, I think I just want to vent" },
   {
     id: 5,
     type: "bot",
-    text: "I get that. You can keep chatting with me, or here's a forum where you can chat with other users in your circle about burnout.",
+    text: "I get that. You can keep chatting with me, or here's a forum where you can chat with other users in your circle about burnout: www.circle.theskim.com/burnout.",
   },
 ];
 
@@ -55,7 +55,7 @@ export default function Conversation() {
             className="flex flex-row-reverse items-center gap-12"
             key={message.id}
           >
-            <div className="relative aspect-square h-[36px] w-[36px] shrink-0">
+            <div className="relative aspect-square w-32 shrink-0">
               <Image
                 src="https://skimm2poct3.s3.amazonaws.com/users/user1.png"
                 alt=""
@@ -81,8 +81,8 @@ export default function Conversation() {
         <input
           ref={inputRef}
           key={count}
-          placeholder="You can type anything to CnD and she'll help you?"
-          className="w-full rounded-full bg-[#F1FCFF] px-[24px] py-[14px] text-14/14 focus:outline-none"
+          placeholder="You can type anything to Cindy and she'll help you"
+          className="w-full rounded-full bg-[#F1FCFF] px-[24px] py-[14px] text-14/16 focus:outline-none"
         />
 
         <button className="absolute right-[24px] top-[50%] translate-y-[-50%]">
@@ -110,7 +110,7 @@ function BotMessage({ message, callback }: { message: any; callback: any }) {
 
   return (
     <div className="flex items-center gap-12">
-      <div className="flex aspect-square w-[38px] shrink-0 items-center justify-center rounded-full border bg-[#F0EEF9] text-14 font-medium">
+      <div className="flex aspect-square w-[32px] shrink-0 items-center justify-center rounded-full border bg-[#F0EEF9] text-14 font-medium">
         C
       </div>
 
