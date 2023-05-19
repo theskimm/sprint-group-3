@@ -57,7 +57,7 @@ export default function Conversation() {
           >
             <div className="relative aspect-square w-32 shrink-0">
               <Image
-                src="https://skimm2poct3.s3.amazonaws.com/users/user1.png"
+                src="/images/avatar.png"
                 alt=""
                 fill
                 className="object-cover"

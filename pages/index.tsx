@@ -135,7 +135,7 @@ export default function Home({ topics }: HomeProps) {
             <div className="flex w-full flex-col items-center justify-center gap-16">
               <div className="relative aspect-square w-[144px] rounded-full border-2 border-[#54003D]">
                 <Image
-                  src="https://skimm2poct3.s3.amazonaws.com/users/user1.png"
+                  src="/images/avatar.png"
                   alt=""
                   fill
                   className="object-cover"
